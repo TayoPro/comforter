@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}  Employer Dashboard {% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore comforter job applicant</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+            <h3><a href="#">{{view_job.general_information.first_name|title}}'s resume</a></h3>
+                <div class="notice">
+                    <p>All applicants are well trained before they get recomended</p>
+                    <p>Do note that any role outside the stated job description  will not be allowed.</p>
+                </div>
+                {% include 'employer_search.html' %}
+                <div class="tags_bar">
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>hospitality</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>caregiver</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>health workers</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>management</span>                            
+                    </div>
+                </div>
+                  {% include 'emnotice.html' %}
+                  <div class="print_icon">
+                    <div class="print_pdf">
+                        <a href="{% url 'employers:employer_applicant_pdf' view_job.slug %}">View in Pdf<span><i class="fa fa-file-pdf" aria-hidden="true"></i></span> </a> 
+                    </div>
+                  </div>
+                <div class="applii_form">
+                    <div class="appli_form" style="padding-top: 1rem;">
+                    <p class="appli_namep">{{view_job.general_information.first_name}} {{view_job.general_information.last_name}}</p>
+                        <div class="line_img">
+                            <div class="img_img">
+                                <img src="{{view_job.general_information.image.url}}">
+                            </div>
+                        </div>
+                        <form action="{% url 'employers:shortlist_applicant' view_job.slug %}" method="POST"> 
+                        {% csrf_token %}
+                            <div class="line">
+                                <label for="">first name</label>
+                                <input type="text" value="{{view_job.general_information.first_name}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">last name</label>
+                                <input type="text" value="{{view_job.general_information.last_name}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">gender</label>
+                                <input type="text" value="{{view_job.general_information.gender}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">phone</label>
+                                <input type="text" value="{{view_job.general_information.mobile_number}}" name="" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">email </label>
+                                <input type="text" value="{{view_job.general_information}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">date of birth <span>(DD/MM/YEAR)</label>
+                                <input type="text" value="{{view_job.general_information}}" name="fname" readonly>
+                            </div>
+                            <div class="resume" style="padding-top: 2rem;">
+                                <h2>resume</h2>
+                                <hr>
+                            </div>
+                            <div class="line">
+                                <label for="">qualification </label>
+                                <input type="text" value="{{view_job.general_information.qualification}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">previous job</label>
+                                <input type="text" value="{{view_job.previous_company}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">languages</label>
+                                <input type="text" value="{{view_job.language_spoken}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">skills</label>
+                                <input type="text" value="{{view_job.additional_skills|title}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">salary expectation</label>
+                                <input type="text" value="{{view_job.salary_expected}}" name="salary_expected" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">job applied</label>
+                                <input type="text" value="{{view_job.job|title}}" name="fname" readonly>
+                            </div>
+                            <div class="line">
+                                <label for="">role applied</label>
+                                <input type="text" value="{{view_job.role}}" name="salary_expected" readonly>
+                            </div>
+                            <div class="updatep">
+                                <label for="">Tell us about yourself </label>
+                                <p>
+                                    {{view_job.about_yourself}}
+                                </p>                                
+                            </div>
+                            <div class="line_btn">
+                                <button type="submit">shortlist applicant?</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

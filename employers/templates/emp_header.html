@@ -1,0 +1,37 @@
+{% load static %}
+<header class="alljobs">
+    <div class="navbar">
+        <div class="logo">
+            <a href="{% url 'index' %}">
+                <img class="logo_img" src="{{home.logo.url}}" alt="">
+            </a>
+        </div>
+        <ul class="links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'accounts:employer' %}">Employer</a></li>
+            <li><a href="{% url 'accounts:applicant' %}">Applicant</a></li>
+        </ul>
+        <div class="toggle_btn">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="dropdown_menu">   
+        <li style="padding-top: 1rem;"><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'accounts:employer' %}">Employer</a></li>
+        <li><a href="{% url 'accounts:applicant' %}">Applicant</a></li>
+    </div> 
+</header>
+
+
+
+<div>
+    {% if messages %}    
+        {% for message in messages %}
+            <div class="popup" id="popup">
+                <img class="pop_img" src="{% static '' %}img/tick.jpg">
+                <p>{{message}}.</p>
+                <button class="btn" type="submit" onclick="closePopup()">ok</button>
+            </div>
+        {% endfor %}    
+    {% endif %}
+</div>

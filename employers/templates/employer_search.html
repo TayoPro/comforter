@@ -1,0 +1,14 @@
+<div class="search_bar">
+    <form action=" {% url 'employers:employer_search_applicants' %}" method="POST">
+    {% csrf_token %}
+        <input type="search" name="searchbar" placeholder="Search applicants here ..." required>
+        <select name="searchbar2" required>                            
+            {% if category %}                                
+                {% for item in category  %}
+                    <option value="{{item.category_name}}">{{item.category_name|title}}</option>
+                {% endfor %}                                    
+            {% endif %}
+        </select>
+        <button type="submit">search</button>
+    </form>
+</div>

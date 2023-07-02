@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+
+{% block title %}  Create Profile - Step 1 {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'appli_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            <div class="main_to">
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:create_profile1' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>section I general information</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">first name</label>
+                            <input  type="text"  name="first_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">middle name</label>
+                            <input  type="text"  name="middle_name">
+                        </div>
+                        <div class="line">
+                            <label for="">last name</label>
+                            <input type="text"  name="last_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">nationality</label>
+                            <input type="text"  name="nationality" required>
+                        </div>
+                        <div class="line">
+                            <label for="">mobile number</label>
+                            <input type="text"  name="mobile_number" required>
+                        </div>
+                        <div class="line">
+                            <label for="">home number</label>
+                            <input type="text"  name="home_number">
+                        </div>
+                        <div class="line">
+                            <label for="">current address</label>
+                            <input type="text"  name="current_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">nearest bus stop</label>
+                            <input type="text"  name="nearest_bus_stop" required>
+                        </div>
+                        <div class="line">
+                            <label for="">landmark</label>
+                            <input type="text"  name="landmark" required>
+                        </div>
+                        <div class="line">
+                            <label for="">current city</label>
+                            <input type="text"  name="current_city" required>
+                        </div>
+                        <div class="line">
+                            <label for="">current state</label>
+                            <input type="text"  name="current_state" required>
+                        </div>
+                        <div class="line">
+                            <label for="">qualification</label>
+                            <input type="text"  name="qualification" required>
+                        </div>
+                        <div class="line">
+                            <label for="">date of birth <span>(DD/MM/YEAR)</label>
+                            <input type="text"  name="date_of_birth" required>
+                        </div>
+                        <div class="line_select" required>
+                            <label for="">gender</label>
+                            <select name="gender">
+                                <option value="female">female</option>
+                                <option value="male">male</option>
+                            </select>
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload Image</label> 
+                                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="image">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="line">
+                            <label for="">state of origin</label>
+                            <input type="text"  name="state_of_origin" required>
+                        </div>
+                        <div class="line">
+                            <label for="">local gov area</label>
+                            <input type="text"  name="local_gov_area">
+                        </div>
+                        <div class="line">
+                            <label for="">parents address </label>
+                            <input type="text"  name="parents_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">parents phone number </label>
+                            <input type="text"  name="parents_phone_number" required>
+                        </div>
+                        <div class="line">
+                            <label for="">name of your village </label>
+                            <input type="text"  name="name_of_your_village" required>
+                        </div>
+                        <div class="line">
+                            <label for="">family or compound name </label>
+                            <input type="text"  name="family_compound_name" required>
+                        </div>
+                        <div class="line_select" required>
+                            <label for="">marital status</label>
+                            <select name="marital_status">
+                                <option value="single">single</option>
+                                <option value="married">married</option>
+                            </select>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">next</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section> 
+    </div>
+</div>
+{% endblock content %}
+    
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

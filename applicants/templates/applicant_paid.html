@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}  Payment Successful {% endblock title %}
+
+
+
+{% block content %}
+<div class="employerr">
+    <div class="container">
+        {% include 'sidebar_profile.html' %}
+        <section class="main">
+            <p class="jop"> Hello {{profile.first_name|title}}!</p>
+            <div class="main_top">
+                <p>payment successful</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                <div id="mane">
+                    <div class="appli_form" id="paymenti">
+                        <form>
+                            <div class="pay_div">
+                                <div class="line">
+                                    <h5>Dear <span>{{profile.first_name|title}},</span> your payment is successful</h5>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

@@ -1,0 +1,56 @@
+{% load static %}
+<header class="header" id="home">
+    <div class="hearder_img">
+        <!-- <div class="overlay"></div> -->
+        <h1 class="header-title" data-aos="fade-up" data-aos-duration="3000">
+        FIND YOUR <br> <span>PERFECT JOB</span> <br> swiftly
+        </h1>        
+        {% if home.banner.url %}
+            <img src="{{home.banner.url}}" alt="">             
+        {% endif %}            
+    </div>
+</header>
+<!-- search box  -->
+<div class="search-wrapper">
+    <div class="search-box">
+        <div class="search-card">
+            <form action="{% url 'job_search' %}" method="POST">
+            {% csrf_token %}
+                <input class="search-input" type="text" name="searchbar" placeholder="search by Job title or keyword">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- filter box  -->
+<div class="filter-box">
+    <div class="filter-chosen" data-aos="fade-up" data-aos-duration="3000">
+        <div class="chosen-card">
+            security <i class="fas fa-times-circle"></i>
+        </div>
+        <div class="chosen-card">
+            care giver <i class="fas fa-times-circle"></i>
+        </div>
+        <div class="chosen-card">
+            hospitality<i class="fas fa-times-circle"></i>
+        </div>
+        <div class="chosen-card">
+            driver <i class="fas fa-times-circle"></i>
+        </div>
+    </div>
+</div>
+<!-- job listings  -->
+
+
+
+<div>
+    {% if messages %}    
+        {% for message in messages %}
+            <div class="popup" id="popup">
+                <img class="pop_img" src="{% static '' %}img/tick.jpg">
+                <p>{{message}}.</p>
+                <button class="btn" type="submit" onclick="closePopup()">ok</button>
+            </div>
+        {% endfor %}    
+    {% endif %}
+</div>

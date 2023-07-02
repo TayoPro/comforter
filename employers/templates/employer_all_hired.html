@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}  Employer Dashboard {% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore all comforter job candidates hired</p>
+            </div>
+            {% include 'appli_popup.html' %}             
+            <div class="main_body">
+                <h3><a href="#">{{emprofile.company_name|title}} candidates hired</a></h3>
+                <div class="notice">
+                    <p>All applicants are well trained before they get recomended for employment</p>
+                    <p>Do note that any role outside the stated job description  will not be allowed.</p>
+                </div>
+                <div class="search_bar">
+                    <form action="/employer_search.html" method="POST">
+                        <input type="search" name="searchbar" placeholder="Search applicants here ...">
+                        <select name="searchbar2" id="">
+                            <option value="">category</option>
+                            <option value="">caregiver</option>
+                            <option value="">hospitality</option>
+                            <option value="">health worker</option>
+                        </select>
+                        <button type="submit">search</button>
+                    </form>
+                </div>
+                <div class="tags_bar">
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>hospitality</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>caregiver</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>health workers</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>management</span>                            
+                    </div>
+                </div>
+                {% include 'emnotice.html' %}
+                
+                {% if all_jobs %}                    
+                    {% for job in all_jobs %}
+                        <div class="job_card">
+                            <div class="job_details">
+                                <div class="text">
+                                    <h2>{{job.general_information.first_name|title}}</h2>
+                                    <span>{{job.job|title}} </span>
+                                    <a class="textaa" href="{% url 'employers:view_applicant' job.slug %} ">view</a>
+                                </div>      
+                            </div>
+                            <div class="job_salary">
+                                <h4>#{{job.salary_expected}}</h4>
+                                <span>{{job.applied_date|naturaltime}}</span>
+                            </div>
+                            <div class="job_hired">
+                                <div class="job_status" id="hide">
+                                    <form action="#" method="POST">                                        
+                                        {% if job.hired %}
+                                            <h4>hired </h4>
+                                            <span>{{job.hireded_date|naturaltime}}</span>                                            
+                                        {% endif %}                                            
+                                    </form>
+                                </div>
+                                <div class="job_status" id="hide1">
+                                    <form action="{% url 'employers:employee_resigned' job.slug %}" method="POST">  
+                                    {% csrf_token %}                                       
+                                        {% if job.resigned %}
+                                            <h4>resigned </h4>
+                                            <span>{{job.resigned_date|naturaltime}}</span>                                             
+                                        {% else %}
+                                            <button class="resign" type="submit">resigned</button>                                            
+                                        {% endif %}                                            
+                                    </form>
+                                </div>
+                                <div class="job_status" id="hide2">
+                                    <form action="{% url 'employers:appointment_terminated' job.slug %}" method="POST">                                        
+                                    {% csrf_token %}
+                                        {% if job.terminated %}
+                                            <h4>terminated </h4>
+                                            <span>{{job.terminated_date|naturaltime}}</span>                                             
+                                        {% else %}
+                                            <button class="terminate" type="submit">terminate</button>                                            
+                                        {% endif %}                                            
+                                    </form>
+                                </div>
+                            </div>                        
+                        </div>
+                    {% endfor %}
+                    <!-- pagination  -->
+                    {% include 'employer_pagination.html' %}
+                    <!-- pagination done --> 
+                {% else %}
+                    <div class="nonyet">
+                        <div class="nonatall">                           
+                            <h2>No hired candidates at the moment</h2>
+                        </div>                    
+                    </div> 
+                {% endif %}                
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

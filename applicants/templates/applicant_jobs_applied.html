@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}  Applicant Jobs Applied {% endblock title %}
+
+<!-- header  -->            
+<!-- header done -->
+
+{% block content %}
+    <div class="employerr">
+        <div class="container">
+            {% include 'sidebar.html' %}
+            <section class="main newmainn">
+                <p class="jop"> Hello <span>{{profile.first_name|title}}!</span></p>
+                <div class="main_top">
+                    <p>explore all comforter jobs you applied for</p>
+                </div>
+                {% include 'applicant_search.html' %}
+                
+                {% include 'appli_popup.html' %}
+                <div class="main_body">
+                    <section class="job-list" id="jobs">
+                        {% include 'notice.html' %}
+                                                
+                        {% if alljobs %}                            
+                            {% for job in alljobs %}
+                                <div class="job-card">
+                                    <div class="job-name">
+                                        <img src="{{job.job_post.employ_logo.url}}" class="job-profile">
+                                        <div class="job-detail">
+                                            <h4>{{job.job_post.employer_name|title}}</h4>
+                                            <h3>{{job.job|title}}</h3>
+                                            <p>{{job.role|title}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="job-label">                                
+                                        {% if job %}                                            
+                                            {% if job.applied %}
+                                                <a href="" class="label-b">open</a>                                       
+                                                <a  class="label-c">already applied</a>
+                                            {% else %}                                            
+                                                <a href="" class="label-b">open</a>                                       
+                                                <a href="{% url 'applicants:applicant_job' job.slug %}" class="label-c">apply</a>                                                
+                                            {% endif %}                                                
+                                        {% else %}
+                                            <a href="" class="label-a">application closed</a>    
+                                        {% endif %}                                    
+                                    </div>                               
+                                    <div class="job-posted">
+                                        <span>posted</span> {{job.applied_date|naturaltime}}
+                                    </div>
+                                </div>
+                            {% endfor %} 
+                            <!-- pagination  -->
+                            {% include 'applicant_pagination.html' %}
+                            <!-- pagination done -->                                
+                        {% else %}
+                        <div class="nonyet">
+                            <div class="nonatall">                           
+                                <h2>No applications at the moment</h2>
+                            </div>                    
+                        </div>
+                        {% endif %}
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

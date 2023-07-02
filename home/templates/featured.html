@@ -1,0 +1,64 @@
+<section class="featured" id="companies">
+    <h1 class="section-title" data-aos="fade-up" data-aos-duration="3000">featured companies</h1>
+    <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+        Et sunt sit accusantium quam ipsum suscipit iste.
+    </p> -->
+    <div class="featured-wrapper" data-aos="zoom-in" data-aos-duration="3000">        
+        {% if img1.c_img.url %}
+            <div class="feat_box">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img1.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}            
+        {% if img2.c_img.url %}                    
+            <div class="feat_box" data-aos="zoom-in-right" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img2.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}        
+        {% if img3.c_img.url %}
+            <div class="feat_box" data-aos="zoom-out-up" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img3.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}        
+        {% if img4.c_img.url %}
+            <div class="feat_box" data-aos="zoom-in" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img4.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}         
+        {% if img5.c_img.url %}
+            <div class="feat_box" data-aos="zoom-in-right" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img5.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}        
+        {% if img6.c_img.url %}
+            <div class="feat_box" data-aos="zoom-in" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img6.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}        
+        {% if img7.c_img.url %}
+            <div class="feat_box" data-aos="zoom-out-up" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img7.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}        
+        {% if img8.c_img.url %}
+            <div class="feat_box" data-aos="zoom-in-left" data-aos-duration="3000">
+                <div class="featured-card">
+                    <img  class="featured-image" src="{{img8.c_img.url}}">
+                </div>
+            </div>            
+        {% endif %}                           
+    </div>
+</section>

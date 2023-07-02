@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Applicant SignIn {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'reg.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="reg">
+    <div class="container">
+        <div class="form_box">
+            <h1>Applicant <span id="title">sign in</span></h1>
+            <form action="{% url 'accounts:applicantsignin' %}" method="POST" id="form"> 
+            {% csrf_token %}
+                <div class="input_group">
+                    <div class="input_field">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <input type="email" class="reg_input" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="input_field">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <div class="what">
+                            <input type="password"  name="password1" class="reg_input input" placeholder="Password">
+                            <div class="show">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>forgot password? <a href="{% url 'accounts:password_reset' %}">click here</a></p> 
+                </div>
+                <div class="btn_field">
+                    <button type="submit">sign in</button>
+                    <button type="button"><a href="{% url 'accounts:applicantsignup' %}">sign up</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    {% if messages %}    
+        {% for message in messages %}
+        <div class="popup" id="popup" style="padding-top: 2rem;">
+            {% comment %} <img class="pop_img" src="{% static '' %}img/alert.jpg"> {% endcomment %}
+            <p>{{message}}.</p>
+            <button class="btn" type="submit" onclick="closePopup()">ok</button>
+        </div>
+        {% endfor %}    
+    {% endif %}
+</div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

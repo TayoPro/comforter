@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block title %}  Create Profile - Step 5 {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'appli_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            
+            <div class="main_to">
+                
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:create_profile5' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>EMPLOYMENT GUARANTOR FORM 2</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="personal">
+                            <p>
+                                SECTION B - PERSONAL INFORMATION
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload ID Card</label>
+                                    <input type="file" name="g2image" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="g2image">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor's name</label>
+                            <input  type="text"  name="guarantor_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor Residential Address</label>
+                            <input  type="text"  name="guarantor_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Office address</label>
+                            <input type="text"  name="guarantor_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Position in the office</label>
+                            <input type="text"  name="guarantor_position" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Phone number</label>
+                            <input type="text"  name="guarantor_phone" required>
+                        </div>
+                        <div class="line">
+                            <label for="">State of origin </label>
+                            <input type="text"  name="guarantor_origin" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Local Govt Area</label>
+                            <input type="text"  name="guarantor_lga" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Name/Relative address/Phone number</label>
+                            <input type="text"  name="guarantor_relative_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Applicant full name:</label>
+                            <input type="text"  name="applicant_name">
+                        </div>
+                        <div class="all_text">
+                            <div class="line_p" id="all_txt">
+                                <p>
+                                    1. To indemnify Comforter S.C Limited against all losses cost and expenses that may
+                                    arise at any time during the continuance of this employment as a result of any act,
+                                    omission, default or neglect of the employee in the performance or purposed
+                                    performance of his/her duties.
+                                </p>
+                                <p>
+                                    2. That I will make myself responsible to pay Comforter S.C Limited for any good loses ,
+                                    costs and expenses that may arise as a result act, omission, default or neglect but
+                                    without prejudice to the right to proceed against the employee by Comforter S.C
+                                    Limited
+                                </p>
+                                <p>
+                                    3. That my liability here in secured will not dependent or contingent upon Comforter S.C
+                                    Limited having first proceeded against the employee for any such act, omission, neglect
+                                    or default whether or not Comforter S.C Limited proceed against the employee.
+                                </p>
+                                <p>
+                                    4. That this guarantee will be a continuing guarantee to the company as long as the
+                                    employee remains in the employment of Comforter S.C Limited
+                                </p>
+                                <p>
+                                    5. That this guarantee will not be affected by any change whatsoever in the constitution
+                                    and my liabilities here under will not hereby discharge from comforter's custody.
+                                    <span class="italy">
+                                    Please note that you are the one to provide the person if not found or you pay the fine.
+                                    </span>
+                                </p>
+                                <p class="dated_this">
+                                    6. Relationship <input type="text" placeholder="" name="relationship"> 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="personal">
+                            <p>
+                                WITNESS TO THE ABOVE
+                            </p>
+                        </div>
+                        <div class="line">
+                            <label for="">name</label>
+                            <input type="text" placeholder="" name="witnes_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">address</label>
+                            <input type="text" placeholder="" name="witnes_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">telephone</label>
+                            <input type="text" placeholder="" name="witnes_phone" required>
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" name="witnes_agree" id="" required>
+                            <label for="">I agree to stand as guarantor for the above named applicant</label>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">submit</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

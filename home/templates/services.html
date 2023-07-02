@@ -1,0 +1,23 @@
+
+<section class="services" id="services">
+    <div class="new_services">
+        <div class="services_heading">
+            <h2 class="section-title"  data-aos="fade-up" data-aos-duration="3000">our services</h2>
+            <p data-aos="zoom-in-left" data-aos-duration="3000">we provide the best services for our clients</p>                
+        </div>
+        <div class="services_container">
+            <!-- box -->            
+            {% if job_title %}                
+                {% for item in job_title %}
+                    <a href="{% url 'single_service' item.slug %}"> 
+                        <div class="services_box" data-aos="flip-left"  data-aos-duration="3000">
+                            <div class="services_bar"></div>
+                            <img src="{{item.job_image.url}}"> 
+                            <h2>{{item.title|title}}</h2>
+                        </div>
+                    </a>                   
+                {% endfor %}                    
+            {% endif %}                
+        </div>
+    </div>
+</section> 

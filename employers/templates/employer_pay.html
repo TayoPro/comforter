@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %} Employer Subscription{% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'emp_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="reg" id="appli_back">
+    <div class="container" id="container_pay2">
+        <div class="form_box">
+            <h1>Employer <span id="title">membership</span></h1>
+            <form action="{% url 'employers:employer_payment' %}" method="POST" id="form">
+                {% csrf_token %}
+                <div class="line_select">
+                    <label>You are required to pay a subcription fee</label>
+                    <input type="hidden" name="phone_no" value="{{phone.phone_no}}">
+                    <input type="hidden" name="first_name" value="{{phone.first_name}}">
+                    <input type="hidden" name="last_name" value="{{phone.last_name}}">
+                    <select name="total" required>
+                        <option>Choose a package</option>
+                        <option value="{{regfee.employer_fee}}">#{{regfee.employer_fee|floatformat:2|intcomma}}</option>
+                        <option value="{{regfee.large_company}}">#{{regfee.large_company|floatformat:2|intcomma}}</option>
+                    </select>
+                </div>
+                <div class="btn_field">
+                    <button type="submit">make payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

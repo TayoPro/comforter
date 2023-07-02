@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}  My Profile {% endblock title %}
+
+
+
+{% block content %}
+<div class="employerr">
+    <div class="container">
+        {% include 'sidebar_profile.html' %}
+        <section class="main">
+            <p class="jop"> Hello {{profile.first_name|title}}!</p>
+            {% include 'appli_popup.html' %}
+            <div class="main_top">
+                <p>my profile</p>
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:profile_update' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>section I general information</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line" re>
+                            <label for="">first name</label>
+                            <input  type="text" value="{{profile.first_name|title}}" name="first_name">
+                        </div>
+                        <div class="line">
+                            <label for="">middle name</label>
+                            <input  type="text" value="{{profile.middle_name|title}}" name="middle_name">
+                        </div>
+                        <div class="line">
+                            <label for="">last name</label>
+                            <input type="text" value="{{profile.last_name|title}}" name="last_name">
+                        </div>
+                        <div class="line">
+                            <label for="">nationality</label>
+                            <input type="text" value="{{profile.nationality|title}}" name="nationality">
+                        </div>
+                        <div class="line">
+                            <label for="">mobile number</label>
+                            <input type="text" value="{{profile.mobile_number}}" name="mobile_number">
+                        </div>
+                        <div class="line">
+                            <label for="">home number</label>
+                            <input type="text" value="{{profile.home_number}}"  name="home_number">
+                        </div>
+                        <div class="line">
+                            <label for="">current address</label>
+                            <input type="text" value="{{profile.current_address|title}}"  name="current_address">
+                        </div>
+                        <div class="line">
+                            <label for="">nearest bus stop</label>
+                            <input type="text" value="{{profile.nearest_bus_stop|title}}" name="nearest_bus_stop">
+                        </div>
+                        <div class="line">
+                            <label for="">landmark</label>
+                            <input type="text" value="{{profile.landmark|title}}" name="landmark">
+                        </div>
+                        <div class="line">
+                            <label for="">current city</label>
+                            <input type="text" value="{{profile.current_city|title}}" name="current_city">
+                        </div>
+                        <div class="line">
+                            <label for="">current state</label>
+                            <input type="text" value="{{profile.current_state|title}}" name="current_state">
+                        </div>
+                        <div class="line">
+                            <label for="">qualification</label>
+                            <input type="text" value="{{profile.qualification}}" name="qualification" required>
+                        </div>
+                        <div class="line">
+                            <label for="">date of birth <span>(DD/MM/YEAR)</label>
+                            <input type="text" value="{{profile.date_of_birth}}"  name="date_of_birth">
+                        </div>
+                        <div class="line_select">
+                            <label for="">gender</label>
+                            <select value="{{profile.gender|title}}" name="gender">
+                                <option value="female">female</option>
+                                <option value="male">male</option>
+                            </select>
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload Image</label> 
+                                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="image">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview" src="{{profile.image.url}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">state of origin</label>
+                            <input type="text" value="{{profile.state_of_origin|title}}" name="state_of_origin">
+                        </div>
+                        <div class="line">
+                            <label for="">local gov area</label>
+                            <input type="text" value="{{profile.local_gov_area|title}}" name="local_gov_area">
+                        </div>
+                        <div class="line">
+                            <label for="">parents address </label>
+                            <input type="text" value="{{profile.parents_address|title}}"  name="parents_address">
+                        </div>
+                        <div class="line">
+                            <label for="">parents phone number </label>
+                            <input type="text" value="{{profile.parents_phone_number}}" name="parents_phone_number">
+                        </div>
+                        <div class="line">
+                            <label for="">name of your village </label>
+                            <input type="text" value="{{profile.name_of_your_village|title}}" name="name_of_your_village">
+                        </div>
+                        <div class="line">
+                            <label for="">family or compound name </label>
+                            <input type="text" value="{{profile.family_compound_name}}" name="family_compound_name">
+                        </div>
+                        <div class="line_select" required>
+                            <label for="">marital status</label>
+                            <select value="{{profile.marital_status}}" name="marital_status">
+                                <option value="single">single</option>
+                                <option value="married">married</option>
+                            </select>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">Update</button>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

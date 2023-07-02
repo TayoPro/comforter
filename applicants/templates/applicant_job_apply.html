@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}  Applicant Dashboard {% endblock title %}
+
+<!-- header  -->            
+<!-- header done -->
+
+{% block content %}
+    <div class="employerr">
+        <div class="container">
+            {% include 'sidebar.html' %}
+            <section class="main">
+                <p class="jop"> ready to apply  <span class="almost">mars</span>?</p>
+                <div class="main_top">
+                    <div class="jobs_all">
+                        <h3>apply to  MTN job offer</h3>
+                    </div>
+                </div>
+                {% include 'appli_popup.html' %}
+                <div class="main_body applii_form">
+                    <div class="appli_form">
+                        <form action="{% url 'applicants:applicant_job_apply' update_job.slug %}" method="POST"> 
+                        {% csrf_token %}
+                            <div class="line">
+                                <label for="">category</label>
+                                <input type="text" value="{{update_job.category|title}}" name="category_apply">
+                            </div>
+                            <div class="line">
+                                <label for="">job</label>
+                                <input type="text" value="{{update_job.job|title}}" name="job">
+                            </div>
+                            <div class="line">
+                                <label for="">role</label>
+                                <input type="text" value="{{update_job.role|title}}" name="role">
+                            </div>
+                            <div class="line">
+                                <label for="">requirement</label>
+                                <input type="text" value="{{update_job.requirement|title}}" name="requirement">
+                            </div>
+                            <div class="line">
+                                <label for="">probabtion</label>
+                                <input type="text" value="{{update_job.probabtion|title}}" name="probabtion">
+                            </div>
+                            <div class="line">
+                                <label for="">location </label>
+                                <input type="text" value="{{update_job.location|title}}" name="location">
+                            </div>
+                            <div class="line">
+                                <label for="">language requirement</label>
+                                <input type="text" value="{{update_job.location|title}}" name="language">
+                            </div>
+                            <div class="line">
+                                <label for="">additional skills (added advantage)</label>
+                                <input type="text" value="{{update_job.location|title}}" name="additional_skills">
+                            </div>
+                            <div class="line">
+                                <label for="">application deadline <span>(DD/MM/YEAR)</label>
+                                <input type="text" value="{{update_job.location|title}}" name="deadline">
+                            </div>
+                            <div class="update">
+                                <label for="">Terms and conditions</label>
+                                <textarea name="employer_terms" id="" cols="30" rows="10">
+                                    {{update_job.employer_terms|title}}
+                                </textarea>                               
+                            </div>
+                            <div class="update">
+                                <label for="">Job Description </label>
+                                <br>
+                                <textarea name="job_description"  cols="30" rows="10">
+                                    {{update_job.job_description|title}}
+                                </textarea>                               
+                            </div>
+                            <div class="line">
+                                <label for="">salary expectation</label>
+                                <input type="text" name="salary_expected">
+                            </div>
+                            <div class="update">
+                                <label for="">Tell us about yourself  <span> (meaning what value are you bringing in? *do not write more than 1000 words*)</label>
+                               <textarea name="about_yourself" id="" cols="30" rows="10"></textarea>                               
+                            </div>
+                            <div class="line_btn">
+                                <button type="submit">submit</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

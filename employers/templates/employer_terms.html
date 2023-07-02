@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} Employer Terms {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'emp_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+           
+            <div class="main_to">
+                
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form attest_form">
+                    <form action="{% url 'employers:employer_term' %}" method="POST" id="terms"> 
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>AGREEMENT FORM / CONDITION OF SERVICE</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="all_text">
+                            <div class="line_p">
+                                <p>
+                                    Comforter (C.G.S) Limited is a registered company operating within
+                                     strict condition and provision of law. We provide jobs and service to 
+                                     our clients on demands. 
+                                     Our mission is to render services to our client's satisfaction. 
+                                </p>
+                                <p>
+                                    1. Our service charge per worker/staff in a year is #{{regfee.worker_year_fee|floatformat:2|intcomma}} 
+                                    just service charge with two uniforms, blood test and consultant
+                                     fee is #{{regfee.employer_fee|floatformat:2|intcomma}}. For a large company is #{{regfee.large_company|floatformat:2|intcomma}} for corporate 
+                                     organization and it is non-refundable but renewable. 
+                                </p>
+                                <p>
+                                    2. We also collect 50% of the first full month's salary of the
+                                     workers together with your service charge payable directly by
+                                      the employer at the resumption stage. 
+                                </p>
+                                <p>
+                                    3. Whenever you desire a change or a new worker or staff you are 
+                                    to be responsible for the transportation or inconvenience 
+                                    allowance to the company while we are ever ready to replace 
+                                    any erring worker or staff at your instant. We assure you of 
+                                    a better working relationship. 
+                                </p>
+                                <p>
+                                    4. Notify us of any misbehavior of a worker/staff where necessary 
+                                </p>
+                                <p>
+                                    5. It is unlawful, criminal for you (the clients) to maltreat or
+                                     abuse the workers. Treat them well and responsibly. 
+                                </p>
+                                <p class="italy">
+                                    Note: We are ready to render all these and many more 
+                                    services to you as demanded, you will enjoy being our
+                                    client. Please also note that you are to pay the 
+                                    company service charge and 50% of your worker/staff
+                                    first month salary at the resumption stage. 
+                                    Please notify us by sending a proof after the 
+                                    payment has being made. 
+                                </p>
+                                <p>Thank you</p>
+                            </div>
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" name="agree" id="" required>
+                            <label for="">I agree to the terms and conditions stated above</label>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">next</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

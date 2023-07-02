@@ -1,0 +1,18 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+
+{% block branding %}
+<a href="{% url 'index' %}"><img style="width:40px;" src="{% static 'img/logo.png' %}"></a>
+    <h1 id="head" style="margin-left: 10px; font-weight: 500;">
+        Comforter CGS Admin 
+    </h1>
+{% endblock branding %}
+    
+
+{% block extrastyle %}
+<link href="{% static 'css/admin.css' %}" rel="stylesheet"> 
+<link rel="icon" type="image/png" sizes="96x96" href="{% static 'img/favicon-96x96.png' %}">
+{% endblock extrastyle %}
+    

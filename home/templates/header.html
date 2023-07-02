@@ -1,0 +1,69 @@
+{% load simple_tags %}
+
+<header>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{% intralink 'index' 'home' %}">                 
+                {% if home.logo.url %}
+                    <img class="logo_img" src="{{home.logo.url}}" alt="">                     
+                {% else %}
+                    <h2>Comforter</h2>                     
+                {% endif %}                    
+            </a>
+        </div>
+        <ul class="links">
+            <li><a href="{% intralink 'index' 'jobs' %}">Jobs</a></li>
+            <li><a href="{% intralink 'index' 'about' %}">About</a></li>
+            <li><a href="{% intralink 'index' 'companies' %}">Companies</a></li>
+            <li><a href="{% intralink 'index' 'services' %}">Services</a></li>
+            <li><a href="{% intralink 'index' 'contact' %}">Contact</a></li>            
+            {% if request.user.is_authenticated %}                
+                {% if request.user.general_information %}
+                    <li><a href="{% url 'applicants:applicant_dashboard' %}">Dashboard</a></li>                                     
+                    <li><a href="{% url 'accounts:signout' %}">Signout</a></li>                 
+                {% endif %}
+                {% if request.user.is_superuser %} 
+                    <li><a href="{% url 'employers:employer_dashboard' %}">Dashboard</a></li>                     
+                    <li><a href="{% url 'accounts:employer_signout' %}">Signout</a></li>                 
+                {% endif %}                    
+                {% if request.user.employer_profile %} 
+                    <li><a href="{% url 'employers:employer_dashboard' %}">Dashboard</a></li>                     
+                    <li><a href="{% url 'accounts:employer_signout' %}">Signout</a></li>                 
+                {% endif %}                    
+            {% else %}
+                <li><a href="{% url 'accounts:employer' %}">Employer</a></li>
+                <li><a href="{% url 'accounts:applicant' %}">Applicant</a></li>                
+            {% endif %}                
+        </ul>
+        <div class="toggle_btn">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="dropdown_menu">   
+        <li><a href="{% intralink 'index' 'jobs' %}">Jobs</a></li>
+        <li><a href="{% intralink 'index' 'about' %}">About</a></li>
+        <li><a href="{% intralink 'index' 'companies' %}">Companies</a></li>
+        <li><a href="{% intralink 'index' 'services' %}">Services</a></li>
+        <li><a href="{% intralink 'index' 'contact' %}">Contact</a></li>
+        {% if request.user.is_authenticated %}
+            {% if request.user.general_information %}
+                <li><a href="{% url 'applicants:applicant_dashboard' %}">Dashboard</a></li>                                     
+                <li><a href="{% url 'accounts:signout' %}">Signout</a></li>                 
+            {% endif %}     
+            {% if request.user.employer_profile %} 
+                <li><a href="{% url 'employers:employer_dashboard' %}">Dashboard</a></li>                     
+                <li><a href="{% url 'accounts:employer_signout' %}">Signout</a></li>                 
+            {% endif %}             
+            {% if request.user.is_superuser %} 
+                <li><a href="{% url 'employers:employer_dashboard' %}">Dashboard</a></li>                     
+                <li><a href="{% url 'accounts:employer_signout' %}">Signout</a></li>                 
+            {% endif %}             
+        {% else %}
+            <li><a href="{% url 'accounts:employer' %}">Employer</a></li>
+            <li><a href="{% url 'accounts:applicant' %}">Applicant</a></li>
+        {% endif %}
+    </div> 
+</header>
+
+
+    

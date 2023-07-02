@@ -1,0 +1,11 @@
+{% load static %}
+
+{% if messages %}    
+    {% for message in messages %} 
+        <div class="popup" id="popup">
+            <img class="pop_img" src="{% static '' %}img/tick.jpg">
+            <p>{{message}}.</p>
+            <button class="btn" type="submit" onclick="closePopup()">ok</button>
+        </div>
+    {% endfor %}    
+{% endif %}

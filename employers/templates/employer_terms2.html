@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %} Employer Terms continues...{% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'emp_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            <div class="main_to">
+                <!-- <p class="jop">hello <span class="almost">mars,</span> kindly read through</p>
+                <p>terms and conditions</p> -->
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form attest_form">
+                    <form action="{% url 'employers:employer_term2' %}" method="POST" id="terms">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>CLIENT OBLIGATION </h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">Client's Fisrt Name</label>
+                            <input type="text"  name="first_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Client's Last Name</label>
+                            <input type="text"  name="last_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Home Address</label>
+                            <input type="text"  name="home_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Office address</label>
+                            <input type="text"  name="office_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Phone number</label>
+                            <input type="text"  name="phone_no" required>
+                        </div>
+                        <!-- <div class="line_select">
+                            <label for="">Package</label>
+                            <select name="total">
+                                <option value="">Select package</option>
+                                <option value="{{regfee.employer_fee}}">#{{regfee.employer_fee|floatformat:2|intcomma}}</option>
+                                <option value="{{regfee.large_company}}">#{{regfee.large_company|floatformat:2|intcomma}}</option>
+                            </select>
+                        </div> -->
+                        <div class="personal">
+                            <p>Attestation </p>
+                        </div>
+                        <div class="line_p">
+                            <p>
+                                I <input type="text" name="attest" value=""> agrees that 
+                                I will abide by the rules and regulations of the Nigerian Law which
+                                 involves being kind, early payment of salary, caring, not being 
+                                 harsh or use of foul languages to your employee. It is unlawful 
+                                 for any client to maltreat any of our workers / staff. And I have agreed to
+                                 pay my employee 50% of his/ her  first full month salary to the company
+                                  and you have opportunity of getting a replacement up to 4 workers / 
+                                staff in a year. 
+                            </p>
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" name="agree2"  required>
+                            <label for="">I agree to the terms and conditions stated above</label>
+                        </div>
+                        <div class="line_p">
+                            <p>Thank you for your cooperation. </p>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">submit</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

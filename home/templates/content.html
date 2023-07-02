@@ -1,0 +1,65 @@
+{% load humanize %}
+
+
+
+{% if all_job %}
+    <section class="job-list" id="jobs">    
+        {% for job in all_job %}      
+            <div class="job-card">
+                <div class="job-name">                
+                    <img src="{{job.employer_profile.employer_logo.url}}" class="job-profile">
+                    <div class="job-detail">
+                        <h4>{{job.employer_profile.company_name|title}}</h4>
+                        <h3>{{job.job|title}}</h3>
+                        <p>{{job.role|title}}</p>
+                    </div>
+                </div>
+                <div class="job-label">
+                    <p class="label-des">{{job.job_description|title|truncatechars:100}}</p>  
+                </div>
+                <div class="job-posted">
+                    <span>posted</span> {{job.publish_date|naturaltime}}
+                </div>
+            </div>
+        {% endfor %}    
+        <a href="{% url 'accounts:applicantsignin' %}" class="job-more">more jobs</a>
+    </section>
+{% endif %}
+
+
+{% if job_searched %}
+    {% if job_searched %}
+    <section class="job-list" id="jobs">    
+        {% for job in job_searched %}      
+            <div class="job-card">
+                <div class="job-name">                
+                    <img src="{{job.employer_profile.employer_logo.url}}" class="job-profile">
+                    <div class="job-detail">
+                        <h4>{{job.employer_profile.company_name|title}}</h4>
+                        <h3>{{job.job|title}}</h3>
+                        <p>{{job.role|title}}</p>
+                    </div>
+                </div>
+                <div class="job-label">
+                    <p class="label-des">{{job.job_description|title|truncatechars:100}}</p>  
+                </div>
+                <div class="job-posted">
+                    <span>posted</span> {{job.publish_date|naturaltime}}
+                </div>
+            </div>
+        {% endfor %}  
+        <a href="{% url 'accounts:applicantsignin' %}" class="job-more">more jobs</a>
+    {% else %}
+        <div class="nonyet">
+            <div class="nonatall">                           
+                <h2>Your search 
+                    {% if items %}
+                        {{items|title}}                                    
+                    {% endif %} is not available
+                </h2>
+            </div>                    
+        </div> 
+        <a href="{% url 'accounts:applicantsignin' %}" class="job-more">more jobs</a>
+    </section>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}  Employer Dashboard {% endblock title %}
+
+
+
+{% block content %}
+<div class="employerpdf">
+    <div class="containerpdf">
+        <section class="mainpdf">
+            <div class="main_toppdf">
+                <p>Comforter S.C Job Applicant</p>
+            </div>
+            <div class="main_bodypdf">
+                <div class="pdf_resume">
+                    <h2>{{view_job.general_information.first_name|title}}'s Profile</h2>
+                    <hr>
+                </div>
+                
+                <div class="applypdf">
+                    <div class="applipdf">
+                        <div class="line_imgpdf">
+                            <p class="appli_namepdf"><span class="fnamepdf">{{view_job.general_information.first_name|title}}</span>  {{view_job.general_information.last_name|title}}</p>
+                            <div class="img_imgpdf">
+                                <img src="{{view_job.general_information.image.path}}">
+                            </div>
+                        </div>
+                        <p><span>First name</span> {{view_job.general_information.first_name}} </p>
+                        
+                        <p> <span>Last name</span> {{view_job.general_information.last_name}}</p>
+                        
+                        <p><span>Gender</span> {{view_job.general_information.gender}}</p>
+                        
+                        <p><span>Phone</span> {{view_job.general_information.mobile_number}}</p>
+                        
+                        <p><span>Email</span> {{view_job.general_information}}</p>
+                        
+                        <p> Date of birth<span class="dobpdf">(DD/MM/YEAR)</span>  {{view_job.general_information.date_of_birth}}</p>
+                        
+                        <div class="pdf_resume">
+                            <h2>Resume</h2>
+                            <hr>
+                        </div>
+                        
+                        <p><span>Qualification</span> {{view_job.general_information.qualification}}</p>
+                        
+                        <p><span>Previous job</span> {{view_job.previous_company}}</p>
+                        
+                        <p><span>Languages spoken</span> {{view_job.language_spoken}}</p>
+                        
+                        <p> <span>Skills</span> {{view_job.additional_skills|title}}</p>
+                        
+                        <p> <span>Salary expectation</span> {{view_job.salary_expected}}</p>
+                        
+                        <p><span>Job applied for</span> {{view_job.job|title}}</p>
+                        
+                        <p><span>Role applied for</span> {{view_job.role|title}}</p>
+                        
+                        <div class="abtpdf">
+                            <label>Tell us about yourself </label> 
+                            <p>
+                                {{view_job.about_yourself}}
+                            </p>   
+                        </div>
+                    </div>
+                </div>             
+            </div>
+        </section>
+    </div>
+    
+    <!-- footer  -->
+    <div class="footerpdf">
+        <hr>
+        <div class="copyrightpdf">
+            <p>&copy;Copyright 2023 Comforter S.C Jobs. All rights reserved</p>
+        </div>
+    </div>
+        
+        <!-- footer done -->
+</div>
+
+{% endblock content %}
+
+    

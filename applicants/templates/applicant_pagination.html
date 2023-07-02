@@ -1,0 +1,27 @@
+<div class="pcontainer">
+    <div class="pagination"> 
+        <ul>
+            {% if alljobs.has_previous %}
+                <li class="prelink"><a href="?page={{alljobs.previous_page_number}}" class="btn1" onclick="backBtn()">prev</a></li>
+            {% else %}
+                <li class="prelink"><a href="?page=1" class="btn1" onclick="backBtn()">first</a></li>
+            {% endif %}
+            {% for item in alljobs.paginator.page_range %}
+                {% if alljobs.number == item %}
+                    <li><a class="plink active" value="1" onclick="activeLink()">{{item}}</a></li>
+                {% else %}
+                    <li><a href="?page={{item}}" class="plink" value="1" onclick="activeLink()">{{item}}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if alljobs.has_next %}
+                <li class="nexlink"><a href="?page={{alljobs.next_page_number}}" class="btn2" onclick="nextBtn()">next</a></li>
+            {% else %}
+                <li class="nexlink" style="margin-left: 3px;"><a href="?page={{alljobs.paginator.num_pages}}" class="btn2" onclick="nextBtn()">last</a></li>
+            {% endif %}
+            <li class="nexlinkp">Page {{alljobs.number}} of {{alljobs.paginator.num_pages}}</li>            
+        </ul>
+    </div>
+</div>
+
+
+

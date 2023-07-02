@@ -1,0 +1,63 @@
+<nav>
+    <div class="enavbar">
+        <div class="newlogo">
+            <img src="{{profile.image.url}}" alt="">
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'applicants:applicant_dashboard' %}">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span class="nav_item">dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:profile_update' %}">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="nav_item">general info</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:applicant_profile2' %}">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="nav_item">job prospect</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:applicant_profile3' %}">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="nav_item">reference</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:applicant_profile4' %}">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="nav_item">guarantor 1</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:applicant_profile5' %}">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="nav_item">guarantor 2</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:applicant_password' %}">
+                    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+                    <span class="nav_item">password update</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'applicants:applicant_payment' %}">
+                    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+                    <span class="nav_item">pay registration fee</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'accounts:signout' %}" class="signout">
+                    <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                    <span class="nav_item">sign out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

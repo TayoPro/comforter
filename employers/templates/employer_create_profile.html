@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} Employer Terms {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'emp_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            <!-- <p class="jop"> hello  <span class="almost">mars</span>!</p> -->
+            <div class="main_to">              
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <div id="new_comp">
+                        <p>create company profile</p>
+                    </div>
+                    <form action="{% url 'employers:create_profile' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                        <!-- <div class="shex_img"   >
+                            <img src="">
+                        </div> -->
+                        <div class="line">
+                            <label for="">company name</label>
+                            <input type="text"  name="company_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">address</label>
+                            <input type="text"  name="address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">city</label>
+                            <input type="text"  name="city" required>
+                        </div>
+                        <div class="line">
+                            <label for="">state</label>
+                            <input type="text"   name="state" required>
+                        </div>
+                        <div class="line">
+                            <label for="">phone</label>
+                            <input type="text"  name="phone" required>
+                        </div>
+                        <div class="line">
+                            <label for="">website </label>
+                            <input type="text"  name="website">
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload your logo</label>
+                                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="employer_logo">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="update">
+                            <label for="">About Us  <span> (make it brief)</label>
+                            <textarea  name="about_us" id="" cols="30" rows="10">
+                                
+                            </textarea>                               
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">create profile</button>
+                        </div>
+                    </form>       
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

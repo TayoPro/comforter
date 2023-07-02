@@ -1,0 +1,17 @@
+<div class="newnotify">
+    <a  class="notify">
+        <form action="{% url 'applicants:notice_remove' %}" method="POST"> 
+        {% csrf_token %} 
+            <button type="submit">      
+                <div class="badge">
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                    {% if notice_counta > 0 %}
+                        <span class="badgeno">{{notice_counta}}</span>
+                    {% else %}
+                    <span class="badgeno">0</span> 
+                    {% endif %}  
+                </div>
+            </button>
+        </form>
+    </a>
+</div>

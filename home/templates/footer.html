@@ -1,0 +1,44 @@
+{% load simple_tags %}
+    <div class="footer-section">
+        <div class="footer">
+            <div class="footer-wrapper">
+                <h3>comforter jobs</h3>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-wrapper">
+                <h4>explore</h4>
+                <a>terms of service</a>
+                <a href="{% intralink 'index' 'companies' %}">top companies</a>
+                <a href="{% url 'accounts:applicantsignup' %}">careers</a> 
+            </div>
+            <div class="footer-wrapper">
+                <h4>about</h4>
+                <a href="{% intralink 'index' 'about' %}">about us</a>
+                <a href="{% intralink 'index' 'contact' %}">contact us</a>
+            </div>
+            <div class="footer-wrapper">
+                <h4>support</h4>
+                <a>24/7 customer service</a>
+                <a>meassage us</a>
+            </div>
+            <div class="footer-wrapper">
+                <h4>community</h4>
+                <a href="{% url 'accounts:applicantsignup' %}">applicant</a>
+                <a href="{% url 'accounts:employersignup' %}">employer</a> 
+            </div>
+        </div>
+        <div class="copyright">
+            <hr>
+            <p>&copy;copyright {{createdby.copyright_year}} {{home.name}}. All rights reserved</p>
+            <p>Crafted by: 
+                <a href="#"><span class="whats"><i class="fab fa-whatsapp" aria-hidden="true"></i></span></a>
+                {% comment %} <a href="{{createdby.crafted_by_whatsapp}}"><span class="whats"><i class="fab fa-whatsapp" aria-hidden="true"></i></span></a> {% endcomment %}
+                {{createdby.crafted_by}}
+            </p>
+        </div>
+    </div>

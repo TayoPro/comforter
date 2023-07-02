@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}  Employer {% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore comforter job applications</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                <h3><a href="#">{{emprofile.company_name|title}} profile update</a></h3>
+            <div class="notice">
+                <p>All applicants are well trained before they get recomended</p>
+            </div>
+            <div class="applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'employers:employer_profile_update' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                        <div class="shex_img"   >
+                            <img src="{{emprofile.employer_logo.url}}">
+                        </div>
+                        <div class="line">
+                            <label for="">company name</label>
+                            <input type="text" value="{{emprofile.company_name|title}}" name="company_name" readonly>
+                        </div>
+                        <div class="line">
+                            <label for="">address</label>
+                            <input type="text" value="{{emprofile.address|title}}" name="address">
+                        </div>
+                        <div class="line">
+                            <label for="">city</label>
+                            <input type="text" value="{{emprofile.city|title}}" name="city">
+                        </div>
+                        <div class="line">
+                            <label for="">state</label>
+                            <input type="text" value="{{emprofile.state|title}}" name="state">
+                        </div>
+                        <div class="line">
+                            <label for="">phone</label>
+                            <input type="text" value="{{emprofile.phone|title}}" name="phone">
+                        </div>
+                        <div class="line">
+                            <label for="">website </label>
+                            <input type="text" value="{{emprofile.website|title}}" name="website">
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload your logo</label>
+                                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="employer_logo">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="update">
+                            <label for="">about us  <span> (not more than 1000 words)</label>
+                            <textarea  name="about_us" id="" cols="30" rows="10">
+                                {{emprofile.about_us|title}}
+                            </textarea>                               
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">update profile</button>
+                        </div>
+                    </form>                
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

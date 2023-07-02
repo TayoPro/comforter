@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}  Employer Job Post Update{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore comforter job applications</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                <h3>job post update</h3>
+                <div class="notice">
+                    <p>All applicants are well trained before they get recomended.</p>
+                    <p>Do note that any role outside the stated job description will not be allowed.</p>
+                </div>
+                {% include 'employer_search.html' %}
+                <div class="tags_bar">
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                        <span>security</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                        <span>caregiver</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                        <span>health workers</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                        <span>management</span>                            
+                    </div>
+                </div>
+                <div class="row">
+                    <p>There are more than <span>400</span> applicants</p>
+                    <a>See all</a>
+                </div>
+                <div class="applii_form">
+                    <div class="appli_form">
+                        <h4>job post update</h4>
+                        <form action="{% url 'employers:job_post_update' update_job.slug %}" method="POST"> 
+                        {% csrf_token %}
+                            <div class="line_select">
+                                <label for="">job category</label>
+                                <select name="category_id">                                    
+                                    {% if category %}                                        
+                                        {% for item in category %}
+                                            <option  value="{{item.id}}">{{item.category_name|title}}</option>                                            
+                                        {% endfor %}                                            
+                                    {% endif %}                                        
+                                </select>
+                            </div>
+                            <div class="line">
+                                <label for="">job</label>
+                                <input type="text" value="{{update_job.job|title}}" name="job">
+                                <input type="hidden" value="{{emprofile.id}}" name="profile">
+                            </div>
+                            <div class="line">
+                                <label for="">role</label>
+                                <input type="text" value="{{update_job.role|title}}" name="role">
+                            </div>
+                            <div class="line">
+                                <label for="">requirement</label>
+                                <input type="text" value="{{update_job.requirement|title}}" name="requirement">
+                            </div>
+                            <div class="line">
+                                <label for="">probabtion</label>
+                                <input type="text" value="{{update_job.probabtion|title}}" name="probabtion">
+                            </div>
+                            <div class="line">
+                                <label for="">location </label>
+                                <input type="text" value="{{update_job.location|title}}" name="location">
+                            </div>
+                            <div class="line">
+                                <label for="">language requirement</label>
+                                <input type="text" value="{{update_job.location|title}}" name="language">
+                            </div>
+                            <div class="line">
+                                <label for="">additional skills (added advantage)</label>
+                                <input type="text" value="{{update_job.location|title}}" name="additional_skills">
+                            </div>
+                            <div class="line">
+                                <label for="">application deadline <span>(DD/MM/YEAR)</label>
+                                <input type="text" value="{{update_job.location|title}}" name="deadline">
+                            </div>
+                            <div class="update">
+                                <label for="">Your Terms and conditions (if any)</label>
+                                <textarea name="employer_terms" id="" cols="30" rows="10">
+                                    {{update_job.employer_terms|title}}
+                                </textarea>                               
+                            </div>
+                            <div class="update">
+                                <label for="">Job Description </label>
+                                <br>
+                                <span>Be very detailed here, as any role(s) outside the stated details will not be allowed.</span>
+                                <textarea name="job_description"  cols="30" rows="10">
+                                    {{update_job.job_description|title}}
+                                </textarea>                               
+                            </div>
+                            <div class="line_gree">
+                                <label for="">Job open?</label>
+                                <input type="checkbox" name="job_open">
+                            </div>
+                            <div class="line_gree">
+                                <label for="">Publish?</label>
+                                <input type="checkbox" name="publish">
+                            </div>
+                            <div class="line_btn">
+                                <button type="submit">update job post</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

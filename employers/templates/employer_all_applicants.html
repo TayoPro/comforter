@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}  Employer Dashboard {% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore comforter job applications</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                    <h3><a href="#">{{emprofile.company_name|title}} recent applications</a></h3>
+                <div class="notice">
+                    <p>All applicants are well trained before they get recomended for employment</p>
+                    <p>Do note that any role outside the stated job description  will not be allowed.</p>
+                </div>
+                {% include 'employer_search.html' %}                
+                <div class="tags_bar">
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>hospitality</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>caregiver</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>health workers</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>management</span>                            
+                    </div>
+                </div>
+                {% include 'emnotice.html' %}               
+                {% if all_jobs %}                    
+                    {% for apply in all_jobs %}  
+                        <div class="job_card">
+                            <div class="job_details">
+                                <div class="img">
+                                    <img src="{{apply.general_information.image.url}}" class="job-profile">
+                                </div>
+                                <div class="text">
+                                    <h2>{{apply.general_information.full_name|title}}</h2>
+                                    <span>{{apply.job|title}}</span>
+                                    <a href="{% url 'employers:view_applicant' apply.slug %}">view</a>
+                                </div>
+                            </div>
+                            <div class="job_salary">
+                                <h4>#{{apply.salary_expected|floatformat:2|intcomma}} monthly</h4>
+                                <span>{{apply.applied_date|naturaltime}}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- pagination  -->
+                    {% include 'employer_pagination.html' %}
+                    <!-- pagination done --> 
+                {% else %}
+                    <div class="nonyet">
+                        <div class="nonatall">                           
+                            <h2>No applicants at the moment</h2>
+                        </div>                    
+                    </div> 
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

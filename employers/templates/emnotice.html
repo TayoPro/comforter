@@ -1,0 +1,31 @@
+
+<div class="row">
+    <p>There are more than <span>400</span> applicants</p>
+    <a href="{% url 'employers:all_applicants' %}">See all</a>
+    <div class="newnotify">
+        <a>
+            <form action="{% url 'employers:notice_removal' %}" method="POST"> 
+            {% csrf_token %} 
+                <button type="submit" class="notify">      
+                        <div class="badge">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                        {% if notice_counter > 0 %}
+                            <span class="badgeno">{{notice_counter}}</span>
+                        {% else %}
+                        <span class="badgeno">0</span> 
+                        {% endif %}  
+                    </div>
+                </button>
+            </form>
+        </a>
+    </div>
+</div>     
+
+
+
+
+
+
+
+
+

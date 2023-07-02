@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block description %} {{home.keyword}} {% endblock description %}
+
+{% block keywords %} {{home.description}} {% endblock keywords %}
+
+{% block title %} Job  {% endblock title %}
+    
+
+<!-- header  -->
+{% block header %}{% include 'header.html' %}{% endblock header %}            
+<!-- header done -->
+<!-- hero  -->        
+{% block hero %}{% include 'hero.html' %} {% endblock hero %}            
+<!-- hero done -->             
+<!-- content   -->
+{% block content %} 
+<!-- content done  -->
+<section class="about" id="about">    
+    {% if service %}        
+        <div class="about_container">
+            <h1 class="section-title" data-aos="fade-up" data-aos-duration="3000">{{service.title|title}}</h1>
+            <div class="about_content">
+                <div class="article">
+                    <h4 data-aos="zoom-in-right" data-aos-duration="3000">{{service.job_description}}</h4>
+                    <div class="single_list">                        
+                        {% if service.list_title %}
+                            <p>{{service.list_title|title}}</p>
+                        {% endif %}                            
+                        <ul data-aos="zoom-in-left" data-aos-duration="3000">
+                            {% if service.list_item1 %}
+                                <li>{{service.list_item1|title}}</li>
+                            {% endif %}
+                            {% if service.list_item2 %}
+                                <li>{{service.list_item2|title}}</li>
+                            {% endif %}
+                            {% if service.list_item3 %}
+                                <li>{{service.list_item3|title}}</li>
+                            {% endif %}
+                            {% if service.list_item4 %}
+                                <li>{{service.list_item4|title}}</li>
+                            {% endif %}
+                            {% if service.list_item5 %}
+                                <li>{{service.list_item5|title}}</li>
+                            {% endif %}
+                            {% if service.list_item6 %}
+                                <li>{{service.list_item6|title}}</li>
+                            {% endif %}
+                            {% if service.list_item7 %}
+                                <li>{{service.list_item7|title}}</li>
+                            {% endif %}
+                            {% if service.list_item8 %}
+                                <li>{{service.list_item8|title}}</li>
+                            {% endif %}                            
+                            {% if service.list_item9 %}
+                                <li>{{service.list_item9|title}}</li>
+                            {% endif %}                            
+                            {% if service.list_item10 %}
+                                <li>{{service.list_item10|title}}</li>
+                            {% endif %}                            
+                        </ul>
+                    </div>
+                    <div class="single_list">                        
+                        {% if service.list2_title %}
+                            <p>{{service.list2_title|title}}</p>
+                        {% endif %}                            
+                        <ul data-aos="zoom-in-left" data-aos-duration="3000">
+                            {% if service.list2_item1 %}
+                                <li>{{service.list2_item1|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item2 %}
+                                <li>{{service.list_item2|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item3 %}
+                                <li>{{service.list2_item3|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item4 %}
+                                <li>{{service.list2_item4|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item5 %}
+                                <li>{{service.list2_item5|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item6 %}
+                                <li>{{service.list2_item6|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item7 %}
+                                <li>{{service.list2_item7|title}}</li>
+                            {% endif %}
+                            {% if service.list2_item8 %}
+                                <li>{{service.list2_item8|title}}</li>
+                            {% endif %}                            
+                        </ul>                       
+                    </div>
+                </div>
+            </div>
+            <div class="about_img" data-aos="zoom-in-down" data-aos-duration="3000">
+                <div class="abt_img_single">
+                    <img src="{{service.job_image.url}}" alt="">
+                </div>
+            </div>
+        </div>
+    {% endif %}        
+</section>
+
+<section class="services" id="services">
+    <div class="singser">
+        <div class="new_services">
+            <div class="services_container" id="singserbox">
+                <!-- box -->           
+                <div class="services_box">
+                    <img src="{{service.job_image2.url}}">
+                </div>
+                <!-- box done -->
+                <!-- box -->            
+                <div class="services_box">
+                    <img src="{{service.job_image3.url}}">
+                </div>                 
+                <!-- box done -->
+                <!-- box -->            
+                <div class="services_box">
+                    <img src="{{service.job_image4.url}}">
+                </div>                 
+                <!-- box done -->
+                <!-- box -->            
+                <div class="services_box">
+                    <img src="{{service.job_image5.url}}">
+                </div>                
+                <!-- box done -->
+            </div>
+        </div>
+    </div>
+</section> 
+{% endblock content %}        
+
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->

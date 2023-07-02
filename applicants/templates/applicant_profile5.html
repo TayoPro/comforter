@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block title %}  My Profile {% endblock title %}
+
+
+
+{% block content %}
+<div class="employerr">
+    <div class="container">
+        {% include 'sidebar_profile.html' %}
+        <section class="main">
+            <p class="jop"> hello {{profile.first_name|title}}!</p>
+            <div class="main_top">
+                <p>my profile</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:profile_update5' %}"  method="POST"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>EMPLOYMENT GUARANTOR FORM 2</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="shex_img">
+                            <img src="{{profile5.g2image.url}}">
+                        </div>
+                        <div class="personal">
+                            <p>
+                                SECTION B - PERSONAL INFORMATION
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload ID Card</label>
+                                    <input type="file" name="g2image" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="g2image">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor's name</label>
+                            <input  type="text" value="{{profile5.guarantor_name|title}}" name="guarantor_name">
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor Residential Address</label>
+                            <input  type="text" value="{{profile5.guarantor_address|title}}" name="guarantor_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Office address</label>
+                            <input type="text" value="{{profile5.guarantor_address|title}}" name="guarantor_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Position in the office</label>
+                            <input type="text" value="{{profile5.guarantor_position|title}}" name="guarantor_position">
+                        </div>
+                        <div class="line">
+                            <label for="">Phone number</label>
+                            <input type="text" value="{{profile5.guarantor_phone|title}}" name="guarantor_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">State of origin </label>
+                            <input type="text" value="{{profile5.guarantor_origin|title}}" name="guarantor_origin">
+                        </div>
+                        <div class="line">
+                            <label for="">Local Govt Area</label>
+                            <input type="text" value="{{profile5.guarantor_lga|title}}" name="guarantor_lga">
+                        </div>
+                        <div class="line">
+                            <label for="">Name/Relative address/Phone number</label>
+                            <input type="text" value="{{profile5.guarantor_relative_address|title}}" name="guarantor_relative_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Applicant full name:</label>
+                            <input type="text" value="{{profile5.applicant_name|title}}" name="applicant_name">
+                        </div>
+                        <div class="all_text">
+                            <div class="line_p" id="all_txt">
+                                <p>
+                                    1. To indemnify Comforter S.C Limited against all losses cost and expenses that may
+                                    arise at any time during the continuance of this employment as a result of any act,
+                                    omission, default or neglect of the employee in the performance or purposed
+                                    performance of his/her duties.
+                                </p>
+                                <p>
+                                    2. That I will make myself responsible to pay Comforter S.C Limited for any good loses ,
+                                    costs and expenses that may arise as a result act, omission, default or neglect but
+                                    without prejudice to the right to proceed against the employee by Comforter S.C
+                                    Limited
+                                </p>
+                                <p>
+                                    3. That my liability here in secured will not dependent or contingent upon Comforter S.C
+                                    Limited having first proceeded against the employee for any such act, omission, neglect
+                                    or default whether or not Comforter S.C Limited proceed against the employee.
+                                </p>
+                                <p>
+                                    4. That this guarantee will be a continuing guarantee to the company as long as the
+                                    employee remains in the employment of Comforter S.C Limited
+                                </p>
+                                <p>
+                                    5. That this guarantee will not be affected by any change whatsoever in the constitution
+                                    and my liabilities here under will not hereby discharge from comforter's custody.
+                                    <span class="italy">
+                                    Please note that you are the one to provide the person if not found or you pay the fine.
+                                    </span>
+                                </p>
+                                <p class="dated_this">
+                                    6. Relationship <input type="text" placeholder="" value="{{profile5.relationship|title}}" name="relationship">
+                                    dated this day of <input type="date" value="{{profile5.dated_this_day}}" name="dated_this_day" placeholder="MM/DD/YEAR"> 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="personal">
+                            <p>
+                                WITNESS TO THE ABOVE
+                            </p>
+                        </div>
+                        <div class="line">
+                            <label for="">name</label>
+                            <input type="text" value="{{profile5.witnes_name|title}}" name="witnes_name">
+                        </div>
+                        <div class="line">
+                            <label for="">address</label>
+                            <input type="text" value="{{profile5.witnes_address|title}}" name="witnes_address">
+                        </div>
+                        <div class="line">
+                            <label for="">telephone</label>
+                            <input type="text" value="{{profile5.witnes_phone}}" name="witnes_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">date</label>
+                            <input type="date" value="{{profile5.witnesed_date|title}}" name="witnesed_date">
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" value="{{profile5.witnes_agree|title}}" name="witnes_agree" id="">
+                            <label for="">I agree to stand as guarantor for the above named applicant</label>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">update</button>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

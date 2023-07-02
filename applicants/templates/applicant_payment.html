@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}  Pay Registration Fee {% endblock title %}
+
+
+
+{% block content %}
+<div class="employerr">
+    <div class="container">
+        {% include 'sidebar_profile.html' %}
+        <section class="main">
+            <p class="jop"> Hello {{profile.first_name|title}}!</p>
+            <div class="main_top">
+                <p>pay registration fee</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                <div id="mane">
+                    <div class="appli_form" id="payment">
+                        <form action=" {% url 'applicants:applicant_pay_fee' %}" method="POST">
+                        {% csrf_token %}
+                            <div class="pay_div">
+                                <h1>Applicant membership fee</h1>
+                                <div class="line">
+                                    <p for="">Dear <span>mars,</span> you are required to pay a registration fee of #{{fee.applicant_fee|floatformat:2|intcomma}} only</p>
+                                    <input  type="hidden"  value="{{fee.applicant_fee}}" name="total">
+                                    <input  type="hidden"  value="{{profile.phone}}" name="phone_no">
+                                    <input  type="hidden"  value="{{profile.first_name}}" name="first_name">
+                                    <input  type="hidden"  value="{{profile.last_name}}" name="last_name">
+                                </div>
+                                <div id="paynow">
+                                    <div class="line_btnp">
+                                        <button type="submit">make payment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

@@ -1,0 +1,76 @@
+<nav>
+    <div class="enavbar">
+        <div class="logo">
+            <img src="{{emprofile.employer_logo.url}}" alt="">
+            <!-- <h1>comforter</h1> -->
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'employers:employer_dashboard' %}"> 
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span class="nav_item">dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'index' %}">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span class="nav_item">home</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:job_post' %}">
+                    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+                    <span class="nav_item">post job</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:jobs_board' %}">
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                    <span class="nav_item">jobs board</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:all_applicants' %}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="nav_item">applicants</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:shortlisted_applicants' %}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="nav_item">shortlisted</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:hired_applicants' %}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="nav_item">hired</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:employer_profile' %}">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span class="nav_item">profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:employer_profile_update' %}"> 
+                    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+                    <span class="nav_item">profile update</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'employers:employer_password' %}"> 
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <span class="nav_item">password</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'accounts:employer_signout' %}" class="signout">
+                    <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                    <span class="nav_item">sign out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

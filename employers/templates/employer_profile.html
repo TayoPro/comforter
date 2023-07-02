@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}  Employer {% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore comforter job applications</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                <h3><a href="#">{{emprofile.company_name|title}} profile</a></h3>
+            <div class="notice">
+                <p>All applicants are well trained before they get recomended</p>
+            </div>
+            <div class="applii_form">
+                <div class="appli_form">
+                    <form action="#">
+                        <div class="shex_img"   >
+                            <img src="{{emprofile.employer_logo.url}}">
+                        </div>
+                        <div class="line">
+                            <label for="">company name</label>
+                            <input type="text" value="{{emprofile.company_name|title}}" name="company_name" readonly>
+                        </div>
+                        <div class="line">
+                            <label for="">address</label>
+                            <input type="text" value="{{emprofile.address|title}}" name="address" readonly>
+                        </div>
+                        <div class="line">
+                            <label for="">city</label>
+                            <input type="text" value="{{emprofile.city|title}}" name="city" readonly>
+                        </div>
+                        <div class="line">
+                            <label for="">state</label>
+                            <input type="text" value="{{emprofile.state|title}}" name="state" readonly>
+                        </div>
+                        <div class="line">
+                            <label for="">phone</label>
+                            <input type="text" value="{{emprofile.phone}}" name="phone" readonly>
+                        </div>
+                        <div class="line">
+                            <label for="">website </label>
+                            <input type="text" value="{{emprofile.website}}" name="website" readonly>
+                        </div>
+                        <div class="updatep">
+                            <p>
+                                {{emprofile.about_us|title}}
+                            </p>                               
+                        </div>
+                    </form>                
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

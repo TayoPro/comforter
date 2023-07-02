@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}  Create Profile - Step 2 {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'appli_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            <!-- <p class="jop"> hello  <span class="almost">mars</span>!</p> -->
+            <div class="main_to">
+                <!-- <p>create profile</p> -->
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:create_profile2' %}" method="POST">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>job prospect</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">post applied for</label>
+                            <input type="text"  name="post_applied_for" required>
+                        </div>
+                        <div class="line">
+                            <label for="">salary expectation</label>
+                            <input type="text"  name="expected_salary" required>
+                        </div>
+                        <div class="line">
+                            <label for="">years of experience</label>
+                            <input type="number"  name="years_of_experience">
+                        </div>
+                        <div class="line">
+                            <label for="">how long do you intend to work?</label>
+                            <input type="text"  name="intended_time_to_work">
+                        </div>
+                        <div class="line_select">
+                            <label for="">have you ever been convicted?</label>
+                            <select name="ever_convicted">
+                                <option value="no">no</option>
+                                <option value="yes">yes</option>
+                            </select>
+                        </div>
+                        <div class="line">
+                            <label for="">how do you want your off? </label>
+                            <input type="text"  name="your_off_days">
+                        </div>
+                        <div class="line">
+                            <label for="">travel period</label>
+                            <input type="text"  name="travel_period">
+                        </div>
+                        <div class="line">
+                            <label for="">reason for travel</label>
+                            <input type="text"  name="travel_period_reason">
+                        </div>
+                        <div class="line">
+                            <label for="">how did you know about comforter</label>
+                            <input type="text"  name="how_did_you_know_us">
+                        </div>
+                        <div class="line">
+                            <label for="">name / phone number</label>
+                            <input type="text" name="name_phone" value="">
+                        </div>
+                        <div class="resume">
+                           <div class="res">
+                                <h2>section II - employment history</h2>
+                                <p>state most recent employer</p>
+                                <hr>
+                           </div>
+                        </div>
+                        <div class="line">
+                            <label for="">employer  address</label>
+                            <input type="text" name="employer_address">
+                        </div>
+                        <div class="line">
+                            <label for="">employer  name</label>
+                            <input type="text" name="employe_name">
+                        </div>
+                        <div class="line">
+                            <label for="">company  name</label>
+                            <input type="text" name="company_name">
+                        </div>
+                        <div class="line">
+                            <label for="">company  phone</label>
+                            <input type="text" name="employer_phone">
+                        </div>
+                        <div class="line_select">
+                            <label for="">work type</label>
+                            <select name="work_type">
+                                <option value="full time">full time</option>
+                                <option value="part time">part time</option>
+                            </select>
+                        </div>
+                        <div class="line">
+                            <label for="">state reasons for leaving?</label>
+                            <input type="text" name="resign_reason">
+                        </div>
+                        <div class="line">
+                            <label for="">did you register with any agent before?</label>
+                            <input type="text" name="register_with_agent">
+                        </div>
+                        <div class="line">
+                            <label for="">name / phone number?</label>
+                            <input type="text" name="agent_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">address</label>
+                            <input type="text" name="agent_address">
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">next</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

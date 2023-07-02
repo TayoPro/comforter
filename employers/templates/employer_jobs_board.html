@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}  Employer Dashboard{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="employer">
+    <div class="container">
+        {% include 'emp_sidebar.html' %}        
+        <section class="main">
+            <div class="main_top">
+                <p>explore comforter job applications</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body">
+                <h3><a href="#">all {{emprofile.company_name|title}} jobs</a></h3>
+                <div class="notice">
+                    <p>All applicants are well trained before they get recomended for employment</p>
+                </div>
+                {% include 'employer_search.html' %}
+                <div class="tags_bar">
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>security</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>caregiver</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>health workers</span>                            
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-times-circle"></i>
+                            <span>management</span>                            
+                    </div>
+                </div>
+                {% include 'emnotice.html' %}
+                {% if all_jobs %}
+                    {% for job in all_jobs %}                    
+                        <div class="job-card">
+                        <a href="{% url 'employers:job_post_update' job.slug %}"> 
+                            <div class="job-name">
+                                <img src="{{job.employer_profile.employer_logo.url}}" class="job-profile">
+                                <div class="job-detail">
+                                    <h3>{{job.job|title}}</h3>
+                                    <p>{{job.job_description|truncatechars:50|title}}</p>
+                                </div>
+                            </div>
+                        </a>
+                            <div class="job-posted">
+                                <span>posted</span>  {{job.publish_date|naturaltime}}  <br> 
+                                <span>deadline</span>  {{job.deadline}} 
+                            </div>
+                            <div class="job_status" id="hide2">
+                                <form action="{% url 'employers:job_closed' job.slug %}" method="POST">                                        
+                                {% csrf_token %}
+                                    {% if job.job_closed %}
+                                        <h4>closed</h4>
+                                        <span>{{job.job_closed_date|naturaltime}}</span>                                             
+                                    {% else %}
+                                        <button class="terminate" type="submit">close?</button>                                            
+                                    {% endif %}                                            
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}   
+                    <!--  -->     
+                    <!-- pagination  -->
+                    {% include 'employer_pagination.html' %}
+                    <!-- pagination done -->                    
+                {% else %}
+                    <div class="nonyet">
+                        <div class="nonatall">                           
+                            <h2>You have not posted jobs</h2>
+                        </div>                    
+                    </div>                    
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

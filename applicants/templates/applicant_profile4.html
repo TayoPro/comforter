@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %}  My Profile {% endblock title %}
+
+
+
+{% block content %}
+<div class="employerr">
+    <div class="container">
+        {% include 'sidebar_profile.html' %}
+        <section class="main">
+            <p class="jop"> hello {{profile.first_name|title}}!</p>
+            <div class="main_top">
+                <p>my profile</p>
+            </div>
+            {% include 'appli_popup.html' %}
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:profile_update4' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>EMPLOYMENT GUARANTOR FORM 1</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="all_text">
+                            <div class="line_p" id="all_txt">
+                                <p>
+                                    GUARANTOR MUST BE A MARRIED MAN WITH AT LEAST TWO CHILDREN
+                                </p>
+                                <p>
+                                    Our employment process requires that a person seeking for employment through our
+                                    company should produce a credible and acceptable persons as a guarantor, if you are willing
+                                    to stand as a guarantor for the applicant, kindly complete this form. Also attach a photocopy
+                                    of your Valid ID Card (Voter's card, Driver's license, National ID Card or International Passport)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="shex_img">
+                            <img src="{{profile4.gimage.url}}">
+                        </div>
+                        <div class="personal">
+                            <p>
+                                SECTION A - PERSONAL INFORMATION
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload ID Card</label>
+                                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="gimage">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor's name</label>
+                            <input  type="text" value="{{profile4.guarantor_name|title}}"  name="guarantor_name">
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor Residential Address</label>
+                            <input  type="text" value="{{profile4.guarantor_address|title}}" name="guarantor_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Telephone number</label>
+                            <input type="text" value="{{profile4.guarantor_phone|title}}" name="guarantor_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">Company /name</label>
+                            <input type="text" value="{{profile4.guarantor_company|title}}" name="guarantor_company">
+                        </div>
+                        <div class="line">
+                            <label for="">Company address</label>
+                            <input type="text" value="{{profile4.guarantor_address|title}}" name="guarantor_address">
+                        </div>
+                        <div class="line">
+                            <label for="">your  Position</label>
+                            <input type="text" value="{{profile4.guarantor_position|title}}" name="guarantor_position">
+                        </div>
+                        <div class="line">
+                            <label for="">Office Contact</label>
+                            <input type="text" value="{{profile4.guarantor_office_phone|title}}" name="guarantor_office_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">State of origin </label>
+                            <input type="text" value="{{profile4.guarantor_origin|title}}" name="guarantor_origin">
+                        </div>
+                        <div class="line">
+                            <label for="">Local Govt Area</label>
+                            <input type="text" value="{{profile4.guarantor_lga|title}}" name="guarantor_lga">
+                        </div>
+                        <div class="line">
+                            <label for="">Name/Relative address/Phone number</label>
+                            <input type="text" value="{{profile4.guarantor_name_phone|title}}" name="guarantor_name_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">Spouse/Friend Address & Contact</label>
+                            <input type="text" value="{{profile4.guarantor_spouse_address|title}}" name="guarantor_spouse_address">
+                        </div>
+                        <div class="line">
+                            <label for="">How do you know him/her?</label>
+                            <input type="text" value="{{profile4.how_do_you_know_him|title}}" name="how_do_you_know_him">
+                        </div>
+                        <div class="line_p newest_line_p">
+                            <p>
+                                I <input type="text" value="{{profile4.attest|title}}" name="attest"  placeholder="Attest here">
+                                who stand as a guarantor for below applicant
+                                confirm willingness to guarantee him/her against any loss by completing the form.
+                            </p>
+                        </div>
+                        <div class="personal">
+                            <p>
+                                Applicant's INFORMATION
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="candidate">
+                            <div class="line">
+                                <label for="">Applicant full name:</label>
+                                <input type="text" value="{{profile4.applicant_name|title}}" name="applicant_name">
+                            </div>
+                            <div class="candi2">
+                                <div class="line_select">
+                                    <label for="">1. Is the candidate well known to you</label>
+                                    <select value="{{profile4.well_known_to_you|title}}" name="well_known_to_you">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="line">
+                                    <label for="">2. What is your relationship with him/her</label>
+                                    <input type="text" value="{{profile4.relationship_with|title}}" name="relationship_with">
+                                </div>
+                                <div class="line">
+                                    <label for="">3. How long have you known him/her (not less than 3 years)</label>
+                                    <input type="text" value="{{profile4.know_for_how_long|title}}" name="know_for_how_long">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" name="agree" id="">
+                            <label for="">I agree to stand as guarantor for the above named applicant</label>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">update</button>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

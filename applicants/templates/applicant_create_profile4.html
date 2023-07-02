@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block title %}  Create Profile - Step 4 {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'appli_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            <!-- <p class="jop"> keep going you are almost there  <span class="almost">mars</span>!</p> -->
+            <div class="main_to">
+                <!-- <p>create profile</p> -->
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:create_profile4' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>EMPLOYMENT GUARANTOR FORM 1</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="all_text">
+                            <div class="line_p" id="all_txt">
+                                <p>
+                                    GUARANTOR MUST BE A MARRIED MAN WITH AT LEAST TWO CHILDREN
+                                </p>
+                                <p>
+                                    Our employment process requires that a person seeking for employment through our
+                                    company should produce a credible and acceptable persons as a guarantor, if you are willing
+                                    to stand as a guarantor for the applicant, kindly complete this form. Also attach a photocopy
+                                    of your Valid ID Card (Voter's card, Driver's license, National ID Card or International Passport)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="personal">
+                            <p>
+                                SECTION A - PERSONAL INFORMATION
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="appli_center">
+                            <div class="form-input">
+                                <div class="preview">
+                                    <label for="file-ip-1">Upload ID Card</label>
+                                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="gimage">
+                                    <div class="flip_img">
+                                        <img id="file-ip-1-preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor's name</label>
+                            <input  type="text"  name="guarantor_name" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Guarantor Residential Address</label>
+                            <input  type="text"  name="guarantor_address">
+                        </div>
+                        <div class="line">
+                            <label for="">Telephone number</label>
+                            <input type="text"  name="guarantor_phone" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Company /name</label>
+                            <input type="text"  name="guarantor_company" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Company address</label>
+                            <input type="text"  name="guarantor_address" required>
+                        </div>
+                        <div class="line">
+                            <label for="">your  Position</label>
+                            <input type="text"  name="guarantor_position">
+                        </div>
+                        <div class="line">
+                            <label for="">Office Contact</label>
+                            <input type="text"  name="guarantor_office_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">State of origin </label>
+                            <input type="text"  name="guarantor_origin" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Local Govt Area</label>
+                            <input type="text"  name="guarantor_lga" required>
+                        </div>
+                        <div class="line">
+                            <label for="">Name/Relative address/Phone number</label>
+                            <input type="text"  name="guarantor_name_phone">
+                        </div>
+                        <div class="line">
+                            <label for="">Spouse/Friend Address & Contact</label>
+                            <input type="text"  name="guarantor_spouse_address">
+                        </div>
+                        <div class="line">
+                            <label for="">How do you know him/her?</label>
+                            <input type="text"  name="how_do_you_know_him">
+                        </div>
+                        <div class="line_p newest_line_p">
+                            <p>
+                                I <input type="text" name="attest"  placeholder="Attest here" required>
+                                who stand as a guarantor for below applicant
+                                confirm willingness to guarantee him/her against any loss by completing the form.
+                            </p>
+                        </div>
+                        <div class="personal">
+                            <p>
+                                Applicant's INFORMATION
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="candidate">
+                            <div class="line">
+                                <label for="">Applicant full name:</label>
+                                <input type="text"  name="applicant_name">
+                            </div>
+                            <div class="candi2">
+                                <div class="line_select" required>
+                                    <label for="">1. Is the candidate well known to you</label>
+                                    <select name="well_known_to_you">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="line">
+                                    <label for="">2. What is your relationship with him/her</label>
+                                    <input type="text"  name="relationship_with">
+                                </div>
+                                <div class="line">
+                                    <label for="">3. How long have you known him/her (not less than 3 years)</label>
+                                    <input type="text"  name="know_for_how_long">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" name="agree" id="" required>
+                            <label for="">I agree to stand as guarantor for the above named applicant</label>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">next</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

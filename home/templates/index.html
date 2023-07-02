@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block description %} {{home.keyword}} {% endblock description %}
+
+{% block keywords %} {{home.description}} {% endblock keywords %}
+
+{% block title %} Home  {% endblock title %}
+    
+
+<!-- header  -->
+{% block header %}{% include 'header.html' %}{% endblock header %}            
+<!-- header done -->
+<!-- hero  -->        
+{% block hero %}{% include 'hero.html' %} {% endblock hero %}            
+<!-- hero done -->             
+<!-- content   -->
+{% block content %} {% include 'content.html' %}    {% endblock content %}        
+<!-- content done  -->
+<!-- about  -->        
+{% block about %} {% include 'about.html' %}{% endblock about %}            
+<!-- about done -->
+<!-- join  -->        
+{% block join %} {% include 'join.html' %}{% endblock join %}
+<!-- join  done-->                 
+<!-- featured companies  -->        
+{% block featured %} {% include 'featured.html' %}{% endblock featured %}
+<!-- featured companies done  --> 
+<!-- services  -->        
+{% block services %} {% include 'services.html' %}{% endblock services %}            
+<!-- services done -->
+<!-- contact  -->        
+{% block contact %}{% include 'contact.html' %} {% endblock contact %}            
+<!-- contact done  -->
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+

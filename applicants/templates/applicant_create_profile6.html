@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}  Create Profile - Step 6{% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'appli_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+<div class="employerr">
+    <div class="container" id="create">            
+        <section class="main">
+            
+            <div class="main_to">
+
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form attest_form">
+                    <form action="{% url 'applicants:create_profile6' %}" method="POST" id="terms">
+                    {% csrf_token %}
+                        <div class="resume">
+                            <div class="res">
+                                <h2>Terms and conditions</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="all_text">
+                            <div class="line_p">
+                                <p name="please_ensure">
+                                    Please ensure that all portions of the form was carefully read by you and
+                                    indicated where applicable to you.
+                                </p>
+                                <p name="our_mission">
+                                    Our mission is to connect applicant to where they are needed as a way of reducing unemployment
+                                    problem in Nigeria, we give information that can help secure a job. Our registration fee is
+                                    three thousand Naira ({{fee.currency_symbol}}{{fee.applicant_fee|floatformat:2|intcomma}}) only and we get 50% of your first full month salary from your
+                                    employer for any job given to you, if you are successful. The company is not liable for any
+                                    applicant failing to pass their interview or applicant inadequacies. Alternatively you will be
+                                    assisted till you get a job.
+                                </p>
+                                <p name="your_job">
+                                    Your job can make you achieve your goal in each area of your life. Note that (no refund of registration fee).
+                                     Please note; that Comforter requirement to become one of our
+                                    worker is; you must be at least 18 years of age. If you are still below (18 years) please
+                                    come with a letter of approval from parents or guardians with your full picture 5x7 and your
+                                    passport photograph. Please make sure you check for spelling, grammar and punctuation
+                                    when filling the forms. Kindly be sure that information given to us by you or your guardians are
+                                    correct, the company reserve the right to terminate your appointment, if any of the information
+                                    provided in this form are found to be false. Note: that your 50% is valid for six (6) months but
+                                    if you change a place of work up to three times before six(6) months, you will pay another 50%
+                                    of your salary to the company. You must not leave your place of work without notice and
+                                    checking of your things. You are to pay our transport fair to wherever we are going. If you did
+                                    not spend up to three months at work, just know that you are to refund the test money to the
+                                    person you are working for, and if you are owing the company any money and you have not
+                                    paid us for the period of two months, we will take your 50% of your salary at the third month.
+                                    Make sure no quarrel, argument, fighting, stealing or running away and mind the way you use
+                                    phone at work.
+                                </p>
+                            </div>
+                            <div class="line_p">
+                                <p>
+                                    I <input type="text" name="attest"  placeholder="attest here" required> have carefully read 
+                                    the terms and conditions of <span>comforter.s.c.limited</span> and hereby agree
+                                    with all the conditions stipulated and i will give two or one month notice 
+                                    before leaving the place of work. <span class="italy">Please note
+                                        that you have to pay us our 50% before the end of the second month</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="line_gree">
+                            <input type="checkbox" name="agree"  required>
+                            <label for="">I agree to the terms and condition stated above</label>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">next</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    

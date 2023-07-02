@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% block title %}  Create Profile - Step 3 {% endblock title %}
+
+<!-- header  -->
+{% block header %}{% include 'appli_header.html' %}{% endblock header %}            
+<!-- header done -->
+
+{% block content %}
+
+<div class="employerr">
+    <div class="container" id="create">
+        <section class="main">
+            <div class="main_to">
+
+            </div>
+            <div class="main_body applii_form">
+                <div class="appli_form">
+                    <form action="{% url 'applicants:create_profile3' %}" method="POST"> 
+                    {% csrf_token %}                           
+                        <div class="resume">
+                            <div class="res">
+                                <h2>health history</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line_select line_ppp">
+                            <p>
+                                Do you have any physical, medical or mental disability
+                                which could prevent you from performing a specific duty?
+                            </p>
+                            <select name="disability">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line">
+                            <label for="">if yes state the disability</label>
+                            <input type="text"  name="state_disability">
+                        </div>
+                        <div class="line_select">
+                            <label for="">do you use glasses?</label>
+                            <select name="use_glasses">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line_select">
+                            <label for="">do you smoke?</label>
+                            <select name="do_you_smoke">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line_select">
+                            <label for="">do you take alcohol?</label>
+                            <select name="take_alcohol">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line_select">
+                            <label for="">are you on any prescription drugs or medication?</label>
+                            <select name="on_medication">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line">
+                            <label for="">if yes state the name of the drug or medicine </label>
+                            <input type="text"  name="medicine_name">
+                        </div>
+                        <div class="line_select">
+                            <label for="">what is your blood group?</label>
+                            <select name="blood_group">
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+-">AB+</option>
+                               <option value="AB-">AB-</option>
+                               <option value="O+">O+</option>
+                               <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="line_select">
+                            <label for="">what is your genotype?</label>
+                            <select name="genotype">
+                                <option value="AA">AA</option>
+                                <option value="AC">AC</option>
+                                <option value="AS">AS</option>
+                                <option value="SS">SS</option>
+                            </select>
+                        </div>
+                        <div class="resume">
+                            <div class="res">
+                                <h2>educational background </h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">school/institution attended</label>
+                            <input type="text"  name="school_attended">
+                        </div>
+                        <div class="line_select">
+                            <label for="">can you read?</label>
+                            <select name="can_you_read">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line_select">
+                            <label for="">can you write?</label>
+                            <select name="can_you_write">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line_select">
+                            <label for="">can you speak english fluently?</label>
+                            <select name="speak_fluently">
+                                <option value="female">no</option>
+                                <option value="male">yes</option>
+                            </select>
+                        </div>
+                        <div class="line">
+                            <label for="">state any other language you speak</label>
+                            <input type="text"  name="language_spoken">
+                        </div>
+                        <div class="resume">
+                            <div class="res">
+                                <h2>spouse or friends data  </h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <label for="">fullname</label>
+                            <input type="text"  name="spouse_name">
+                        </div>
+                        <div class="line">
+                            <label for="">no of children</label>
+                            <input type="number"  name="no_children">
+                        </div>
+                        <div class="line">
+                            <label for="">residential address</label>
+                            <input type="text"  name="spouse_address">
+                        </div>
+                        <div class="line">
+                            <label for="">nearest bus stop</label>
+                            <input type="text"  name="spouse_bstop">
+                        </div>
+                        <div class="line">
+                            <label for="">phone number</label>
+                            <input type="text"  name="spouse_phone">
+                        </div>
+                        <div class="resume">
+                            <div class="res">
+                                <h2>reference</h2>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="line_pp">
+                            <p>Must be a family member or relative 
+                                that is close to you who should be able to
+                                testify to your character
+                            </p>
+                        </div>
+                        <div class="line">
+                            <label for="">full name</label>
+                            <input  type="text"  name="family_name">
+                        </div>
+                        <div class="line">
+                            <label for="">residential address</label>
+                            <input  type="text"  name="family_address">
+                        </div>
+                        <div class="line">
+                            <label for="">occupation </label>
+                            <input type="text"  name="family_occupation">
+                        </div>
+                        <div class="line">
+                            <label for="">phone number</label>
+                            <input type="text"  name="family_phone">
+                        </div>
+                        <div class="personal">
+                            <p>personal reference</p>
+                            <hr>
+                        </div>
+                        <div class="line">
+                            <label for="">full name</label>
+                            <input  type="text"  name="reference_name">
+                        </div>
+                        <div class="line">
+                            <label for="">residential address</label>
+                            <input  type="text"  name="reference_address">
+                        </div>
+                        <div class="line">
+                            <label for="">occupation </label>
+                            <input type="text"  name="reference_occupation">
+                        </div>
+                        <div class="line">
+                            <label for="">phone number</label>
+                            <input type="text"  name="reference_number">
+                        </div>
+                        <div class="line_p newest_line_p">
+                            <p>
+                                I <input type="text" name="attest"  placeholder="Attest here"> have carefully read 
+                                the terms and conditions of <span>comforter.s.c.limited</span> and hereby agree
+                                with all the conditions stipulated and i will give two or one month notice 
+                                before leaving the place of work.
+                            </p>
+                        </div>
+                        <div class="line_btn">
+                            <button type="submit">next</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- footer  -->        
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}            
+<!-- footer done -->
+    
